@@ -1,11 +1,8 @@
-// @imports here
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-body {
-  background-color: black;
-  color: #fff;
-}
-
-img {
-  width: 50rem;
-  height: 30rem;
-}
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
