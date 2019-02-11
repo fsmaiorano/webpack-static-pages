@@ -1,3 +1,12 @@
-var a = async () => {
-  await console.log("Hello World");
-};
+class teste {
+  constructor() {
+    this.t();
+  }
+
+  t() {
+    debugger;
+    console.log($(window));
+  }
+}
+
+new teste();

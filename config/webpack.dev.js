@@ -1,9 +1,14 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   entry: {
     // main: ["babel-polyfill", "./main.js"]
-    main: ["babel-runtime/regenerator", "./main.js"]
+    main: [
+      "babel-runtime/regenerator",
+      "./main.js",
+      "./node_modules/jquery/dist/jquery.js"
+    ]
   },
   mode: "development",
   output: {
@@ -94,5 +99,11 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
+  ]
 };

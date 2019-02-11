@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 const optimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const minifyPlugin = require("babel-minify-webpack-plugin");
@@ -7,7 +8,11 @@ const compressionPlugin = require("compression-webpack-plugin");
 module.exports = {
   entry: {
     // main: ["babel-polyfill", "./main.js"]
-    main: ["./main.js"]
+    main: [
+      "./main.js",
+      "./node_modules/jquery/dist/jquery.js",
+      "./node_modules/material-design-lite/dist/material.js"
+    ]
   },
   mode: "production",
   output: {
@@ -97,9 +102,13 @@ module.exports = {
     new miniCssExtractPlugin({
       filename: "[name]-[contenthash].css"
     }),
-    new minifyPlugin()
+    new minifyPlugin(),
     // new compressionPlugin({
     //   algorithm: "gzip"
     // })
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ]
 };
