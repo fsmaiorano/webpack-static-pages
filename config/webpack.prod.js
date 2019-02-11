@@ -8,11 +8,7 @@ const compressionPlugin = require("compression-webpack-plugin");
 module.exports = {
   entry: {
     // main: ["babel-polyfill", "./main.js"]
-    main: [
-      "./main.js",
-      "./node_modules/jquery/dist/jquery.js",
-      "./node_modules/material-design-lite/dist/material.js"
-    ]
+    main: ["./main.js", "./node_modules/jquery/dist/jquery.js"]
   },
   mode: "production",
   output: {
@@ -100,7 +96,8 @@ module.exports = {
   plugins: [
     new optimizeCssAssetsPlugin(),
     new miniCssExtractPlugin({
-      filename: "[name]-[contenthash].css"
+      // filename: "[name]-[contenthash].css"
+      filename: "[name].css"
     }),
     new minifyPlugin(),
     // new compressionPlugin({
